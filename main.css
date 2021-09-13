@@ -1,0 +1,190 @@
+html {
+	font-size: 1rem;
+}
+
+body {
+	background: #FBFBFB;
+	font-weight: 400;
+	line-height: 1.7;
+	color: #1a1a1a;
+}
+
+.subText {
+	color: #979797;
+	font-size: 0.9rem;
+	margin: 0;
+	margin-block-start: 0;
+	margin-block-end: 0;
+}
+
+.headerText {
+	margin: 0 0 .5rem;
+	margin-block-start: 0;
+	margin-block-end: 0;
+}
+
+.headerContainer {
+	text-align: center;
+	margin-bottom: 4rem;
+}
+
+.calContainer {
+	margin: 6.25rem 18.75rem;
+	min-width: 50rem;
+}
+
+
+.calculator {
+	display: flex;
+	padding: 3rem 1.875rem;
+	border-radius: 1.25rem;
+	background: #ffffff;
+	box-shadow: 0 0 0.625rem #c7c7c7;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.inputBox {
+	border: none;
+	border-bottom: 1px solid #D4D5D9;
+	outline: none;
+	font-size: 1.5rem;
+	width: 4rem;
+	max-width: 100rem;
+	text-align: right;
+}
+
+.sliderUnit {
+	color: #4d4d4d;
+	font-size: 1.5rem;
+}
+
+.calSlider, .calChart {
+	flex: 1;
+	text-align: center;
+	position: relative;
+	width: 100%;
+}
+
+.totalAmountValue {
+	font-weight: 600;
+}
+
+.chartDetails {
+	font-size: 1.2rem;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	transform: translate(0, -66%);
+}
+
+.totalAmountText {
+	font-size: 0.8rem;
+}
+.sliderContent {
+	margin-bottom: 1.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.sliderText {
+	font-weight: 600;
+}
+
+.sliderContainer {
+	margin-bottom: 2rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.rupee {
+	position: absolute;
+	font-size: 1.5rem;
+	visibility: hidden;
+}
+
+.sliderInput {
+	position: relative;
+}
+
+.emi {
+	font-size: 2rem;
+	font-weight: 600;
+	color: #4d4d4d;
+}
+
+/*Slider Bar*/
+.sliderBarContainer {
+	position: relative;
+	cursor: pointer;
+}
+
+.sliderBar {
+	cursor: pointer;
+	height: 0.4rem;
+	background: #EAEAEC;
+	border-radius: 0.8rem;
+}
+
+.sliderBarPercentage {
+	background-color: #ee7765;
+	height: 0.4rem;
+	border-radius: 0.8rem 0 0 0.8rem;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	max-width: 100%;
+	will-change: width;
+}
+
+.sliderDot {
+	top: -6px;
+	left: 0;
+	position: absolute;
+	cursor: pointer;
+	font-size: 1rem;
+	text-align: center;
+	background-color: #ee7765;
+	width: 0.625rem;
+	height: 0.625rem;
+	border-radius: 50%;
+	border: 4px solid #ffffff;
+	box-shadow: 0 0 0 1px #ee7765;
+	will-change: transform;
+}
+
+/*end slider bar*/
+
+/*For Small Screen */
+
+@media (max-width: 800px) {
+	body {
+		font-size: 0.8rem;
+	}
+
+	.calculator {
+		flex-direction: column;
+	}
+
+	.calContainer {
+		min-width: 10rem;
+		margin: 0;
+	}
+
+	.donutCanvas {
+		width: inherit;
+		height: inherit;
+	}
+
+	.chartDetails {
+		font-size: 1rem;
+	}
+}

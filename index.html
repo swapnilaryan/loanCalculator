@@ -1,0 +1,55 @@
+<!Doctype html>
+<html lang="en">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet" href="main.css"/>
+<title>Home Loan EMI Calculator</title>
+<body>
+
+<template id="sliderTemplate">
+    <div class="sliderContainer" data-helper="">
+        <div class="sliderContent">
+            <span class="sliderText"></span>
+            <span class="sliderInput">
+                <span class="rupee">&#x20B9;</span>
+                <input class="inputBox" value="" type="text" data-value=""/>
+                <span class="sliderUnit"></span>
+            </span>
+        </div>
+        <div class="sliderBarContainer">
+            <div class="sliderBar"></div>
+            <div class="sliderBarPercentage"></div>
+            <div class="sliderDot"></div>
+        </div>
+    </div>
+</template>
+
+<div class="calContainer">
+    <div class="headerContainer">
+        <h1 class="headerText">Home Loan EMI Calculator</h1>
+        <h4 class="subText">Get in touch and let us know how we can help.</h4>
+    </div>
+    <div class="calculator">
+        <div class="calSlider">
+            <div class="emi">
+                <div class="sliderContent">
+                    <span class="emiText">EMI</span>
+                    <span><span>&#x20B9;</span><span class="emiAmount">0</span></span>
+                </div>
+            </div>
+        </div>
+        <div class="calChart">
+            <canvas id="canvas" class="donutCanvas" height="400" width="400"></canvas>
+            <div class="chartDetails">
+                <div class="totalAmountText">Total Amount</div>
+                <div>
+                    <span><b>&#x20B9;</b></span>
+                    <span class="totalAmountValue">0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="main.js" type="module" defer></script>
+</body>
+</html>

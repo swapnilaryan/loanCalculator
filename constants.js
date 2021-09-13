@@ -1,0 +1,7 @@
+const ADJUST_DOT = 18;
+const BORDER_PX_ADJUST = 8;
+
+export {
+  ADJUST_DOT,
+  BORDER_PX_ADJUST
+}
