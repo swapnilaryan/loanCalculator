@@ -33,7 +33,6 @@ body {
 	min-width: 50rem;
 }
 
-
 .calculator {
 	display: flex;
 	padding: 3rem 1.875rem;
@@ -42,6 +41,10 @@ body {
 	box-shadow: 0 0 0.625rem #c7c7c7;
 	align-items: center;
 	justify-content: space-between;
+}
+
+.hide {
+	opacity: 0;
 }
 
 .inputBox {

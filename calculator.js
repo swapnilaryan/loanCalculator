@@ -17,6 +17,7 @@ const calculator = (helpersObj) => {
   const calSliderEl = document.getElementsByClassName("calSlider")[0];
   const emiAmountEl = document.getElementsByClassName("emiAmount")[0];
   const totalAmountValueEl = document.getElementsByClassName("totalAmountValue")[0];
+  const calculatorEl = document.getElementsByClassName("calculator")[0];
 
   const emiVariables = {
     loanAmount: 0,
@@ -274,6 +275,7 @@ const calculator = (helpersObj) => {
       }
       updateValues(width, xPos, ADJUST_DOT, helperName, inputEl, helpersObj, emiVariables, targetElObj, options);
     }
+    calculatorEl.classList.remove("hide");
   }
 
   render();
