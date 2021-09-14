@@ -101,12 +101,6 @@ body {
 	margin-bottom: 2rem;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-	-webkit-appearance: none;
-	margin: 0;
-}
-
 .rupee {
 	position: absolute;
 	font-size: 1.5rem;
