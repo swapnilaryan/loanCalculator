@@ -2,36 +2,58 @@ import {currencyValue, getRad} from "./utils.js";
 
 const LINE_WIDTH = 75;
 const RADIUS = 125;
-const INTEREST_AMT_COLOR = '#4B4968';
-const PRINCIPAL_AMT_COLOR = '#ED7765';
 const TEXT_COLOR = "#4D4D4D";
 const AMOUNT_COLOR = "#000000"
 const X_POS = 200;
 const Y_POS = 165;
 const START_ANGLE = getRad(0);
+const END_ANGLE = 2 * Math.PI
+const PRINCIPAL_AMT_OBJ = {
+  color: '#ED7765',
+  radius: 7,
+  arcXPos: 40,
+  arcYPos: 365,
+  fillTextXPos: 50,
+  fillTextYPos: 370,
+  currencyValueXPos: 100,
+  currencyValueYPos: 395,
+  displayText: 'Principal Amount'
+};
+
+const INTEREST_AMT_OBJ = {
+  color: '#4B4968',
+  radius: 7,
+  arcXPos: 250,
+  arcYPos: 365,
+  fillTextXPos: 260,
+  fillTextYPos: 370,
+  currencyValueXPos: 305,
+  currencyValueYPos: 395,
+  displayText: 'Interest Amount'
+};
 
 const drawLabelsNText = (canvasCtx, principalAmt, interestAmt) => {
-  canvasCtx.fillStyle = PRINCIPAL_AMT_COLOR;
+  canvasCtx.fillStyle = PRINCIPAL_AMT_OBJ.color;
   canvasCtx.beginPath();
-  canvasCtx.arc(40, 365, 7, 0, 2 * Math.PI);
+  canvasCtx.arc(PRINCIPAL_AMT_OBJ.arcXPos, PRINCIPAL_AMT_OBJ.arcYPos, PRINCIPAL_AMT_OBJ.radius, START_ANGLE, END_ANGLE);
   canvasCtx.fill();
 
-  canvasCtx.fillStyle = INTEREST_AMT_COLOR;
+  canvasCtx.fillStyle = INTEREST_AMT_OBJ.color;
   canvasCtx.beginPath();
-  canvasCtx.arc(250, 365, 7, 0, 2 * Math.PI);
+  canvasCtx.arc(INTEREST_AMT_OBJ.arcXPos, INTEREST_AMT_OBJ.arcYPos, INTEREST_AMT_OBJ.radius, START_ANGLE, END_ANGLE);
   canvasCtx.fill();
 
   canvasCtx.fillStyle = TEXT_COLOR;
   canvasCtx.font = "0.9rem Arial";
   canvasCtx.textAlign = "start";
-  canvasCtx.fillText("Principal Amount", 50, 370);
-  canvasCtx.fillText("Interest Amount", 260, 370);
+  canvasCtx.fillText(PRINCIPAL_AMT_OBJ.displayText, PRINCIPAL_AMT_OBJ.fillTextXPos, PRINCIPAL_AMT_OBJ.fillTextYPos);
+  canvasCtx.fillText(INTEREST_AMT_OBJ.displayText, INTEREST_AMT_OBJ.fillTextXPos, INTEREST_AMT_OBJ.fillTextYPos);
 
   canvasCtx.fillStyle = AMOUNT_COLOR;
   canvasCtx.font = "1rem Arial";
   canvasCtx.textAlign = "center";
-  canvasCtx.fillText(`₹${currencyValue(principalAmt)}`, 100, 395);
-  canvasCtx.fillText(`₹${currencyValue(interestAmt)}`, 305, 395);
+  canvasCtx.fillText(`₹${currencyValue(principalAmt)}`, PRINCIPAL_AMT_OBJ.currencyValueXPos, PRINCIPAL_AMT_OBJ.currencyValueYPos);
+  canvasCtx.fillText(`₹${currencyValue(interestAmt)}`, INTEREST_AMT_OBJ.currencyValueXPos, INTEREST_AMT_OBJ.currencyValueYPos);
 }
 
 const updateChart = (canvasEl, principalAmt, totalAmt) => {
@@ -54,7 +76,7 @@ const updateChart = (canvasEl, principalAmt, totalAmt) => {
   // principal amount
   canvasCtx.beginPath();
   canvasCtx.lineWidth = LINE_WIDTH;
-  canvasCtx.strokeStyle = PRINCIPAL_AMT_COLOR;
+  canvasCtx.strokeStyle = PRINCIPAL_AMT_OBJ.color;
   canvasCtx.arc(X_POS, Y_POS, RADIUS, START_ANGLE, principalEndAngle);
   canvasCtx.globalCompositeOperation = 'copy'
   canvasCtx.stroke();
@@ -62,7 +84,7 @@ const updateChart = (canvasEl, principalAmt, totalAmt) => {
   // interest amount
   canvasCtx.beginPath();
   canvasCtx.lineWidth = LINE_WIDTH;
-  canvasCtx.strokeStyle = INTEREST_AMT_COLOR;
+  canvasCtx.strokeStyle = INTEREST_AMT_OBJ.color;
   canvasCtx.arc(X_POS, Y_POS, RADIUS, interestStartAngle, getRad(interestAmtDeg) + interestStartAngle);
   canvasCtx.globalCompositeOperation = 'source-over'
   canvasCtx.stroke();
