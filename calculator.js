@@ -248,9 +248,7 @@ const calculator = (helpersObj) => {
     return fragment;
   }
 
-  const render = () => {
-    calSliderEl.prepend(buildHelpers());
-
+  const updateHelperStyles = () => {
     const sliderContainerList = document.getElementsByClassName("sliderContainer");
     for(let i=0;i<sliderContainerList.length;i++) {
       const item = sliderContainerList[i];
@@ -275,8 +273,15 @@ const calculator = (helpersObj) => {
       }
       updateValues(width, xPos, ADJUST_DOT, helperName, inputEl, helpersObj, emiVariables, targetElObj, options);
     }
+  }
+
+  const render = () => {
+    calSliderEl.prepend(buildHelpers());
+    updateHelperStyles();
     calculatorEl.classList.remove("hide");
   }
+
+  window.addEventListener('resize', updateHelperStyles);
 
   render();
 }
