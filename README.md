@@ -27,4 +27,6 @@ This file has all the styling
 ### index.html 
 it contains all the app html layout  
 
-Focus has been put on bit of responsiveness and mobile version as well as an add-on. 
+Focus has been put on bit of responsiveness and mobile version as well as an add-on.
+
+Currently, it has been tested on Firefox and Chrome browser. 

@@ -3,7 +3,7 @@ import {updateChart} from "./chart.js";
 import {BORDER_PX_ADJUST} from "./constants.js";
 
 const getHelperName = (path) => {
-  const sliderContainerEl = path.find(item => item.className === "sliderContainer");
+  const sliderContainerEl = findParent("sliderContainer") ;
   return sliderContainerEl.getAttribute("data-helper");
 }
 
@@ -141,7 +141,16 @@ const getOffsetX = () => {
   return calSliderRect.left - BORDER_PX_ADJUST;
 }
 
+const findParent = (targetEl, parentClassName) => {
+  if(targetEl.className === parentClassName) return targetEl;
+  while(targetEl.parentNode.className !== parentClassName) {
+    targetEl = targetEl.parentNode;
+  }
+  return targetEl.parentNode;
+}
+
 export {
+  findParent,
   getOffsetX,
   inValidCheck,
   isEditingAllowed,

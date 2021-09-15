@@ -5,7 +5,7 @@ import {
   updateValues,
   handleBackSpace,
   isBackSpace,
-  inValidCheck, getOffsetX,
+  inValidCheck, getOffsetX, findParent,
 } from "./browserUtils.js";
 import {setValue} from "./utils.js";
 import {ADJUST_DOT, BORDER_PX_ADJUST} from "./constants.js";
@@ -42,7 +42,7 @@ const calculator = (helpersObj) => {
 
   const onMouseDown = (event) => {
     if (sliderClass.indexOf(event.target.className) !== -1) {
-      const sliderContainerEl = event.path.find(item => item.className === "sliderContainer");
+      const sliderContainerEl = findParent(event.target, "sliderContainer");
       const width = event.target.parentNode.offsetWidth;
       const helperName = sliderContainerEl.getAttribute("data-helper");
       const targetClass = event.target.className;
@@ -122,7 +122,8 @@ const calculator = (helpersObj) => {
   };
 
   const onKeyUp = (event) => {
-    const helperName = getHelperName(event.path);
+    const sliderContainerEl = findParent(event.target, "sliderContainer");
+    const helperName = sliderContainerEl.getAttribute("data-helper") //getHelperName(event.target, sliderContainerEl);
     if(inValidCheck(helperName, event)) {
       return;
     }
@@ -151,7 +152,6 @@ const calculator = (helpersObj) => {
     inputBoxEl.setAttribute("value", `${currVal}`);
     inputBoxEl.value = currVal;
 
-    const sliderContainerEl = event.path.find(item => item.className === "sliderContainer");
     const width = sliderContainerEl.offsetWidth
     const percentage = inputBoxEl.value / helpersObj[helperName].maxValue;
     let xPos = width * percentage;
@@ -171,7 +171,9 @@ const calculator = (helpersObj) => {
     updateValues(width, xPos, ADJUST_DOT, helperName, inputBoxEl, helpersObj, emiVariables, targetElObj, options);
   }
   const onKeyDown = (event) => {
-    const helperName = getHelperName(event.path);
+    const sliderContainerEl = findParent(event.target, "sliderContainer");
+    const helperName = sliderContainerEl.getAttribute("data-helper")
+    // const helperName = getHelperName(event.target, "sliderContainer");
     if(inValidCheck(helperName, event)) {
       return;
     }
