@@ -29,4 +29,6 @@ it contains all the app html layout
 
 Focus has been put on bit of responsiveness and mobile version as well as an add-on.
 
-Currently, it has been tested on Firefox and Chrome browser. 
+Currently, it has been tested on Firefox and Chrome browser.
+
+The current code is deployed here https://admiring-kare-d0fe6f.netlify.app/
